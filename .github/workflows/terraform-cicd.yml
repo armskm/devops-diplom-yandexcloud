@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: deploy
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: terraform-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+  TF_VAR_token: ${{ secrets.TOKEN }}
+  TF_VAR_cloud_id: ${{ secrets.CLOUD_ID }}
+  TF_VAR_folder_id: ${{ secrets.FOLDER_ID }}
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  deploy:
+    # The type of runner that the job will run on
+    runs-on: deb12
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: terraform kuber init and apply
+        run: |
+          cd ./terraform-infra
+          terraform init -input=false -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_key=$SECRET_KEY"
+          terraform plan -input=false
+          terraform apply -input=false -auto-approve
