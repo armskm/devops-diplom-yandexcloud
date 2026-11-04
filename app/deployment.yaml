@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-diplom-app
+  labels:
+    app: my-diplom-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-diplom-app
+  template:
+    metadata:
+      labels:
+        app: my-diplom-app
+    spec:
+      containers:
+      - name: app
+        image: armskm/my-diplom-app:v1
+        ports:
+        - containerPort: 80
