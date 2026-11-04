@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: app
-        image: armskm/my-diplom-app:v1
+        image: armskm/my-diplom-app:latest
         ports:
         - containerPort: 80
