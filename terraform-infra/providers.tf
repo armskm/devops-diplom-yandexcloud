@@ -12,8 +12,6 @@ terraform {
     }
     bucket                      = "klementyev-bkt-2610"
     key                         = "infra/terraform.tfstate"
-    access_key                  = "YC//////////////rWY"
-    secret_key                  = "YCO////////////////////c0F9lQ5"
     region                      = "ru-central1"
     skip_region_validation      = true
     skip_credentials_validation = true
@@ -25,7 +23,7 @@ terraform {
 }
 
 provider "yandex" {
-  token     = var.token
+  token      = var.token
   cloud_id   = var.cloud_id
   folder_id  = var.folder_id
   zone       = var.default_zone
