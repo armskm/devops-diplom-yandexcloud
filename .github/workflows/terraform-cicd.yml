@@ -38,6 +38,6 @@ jobs:
       - name: terraform kuber init and apply
         run: |
           cd ./terraform-infra
-          terraform init -input=false -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_key=$SECRET_KEY"
-          terraform plan -input=false
-          terraform apply -input=false -auto-approve
+          terraform init -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_key=$SECRET_KEY"
+          terraform plan
+          terraform apply -auto-approve
