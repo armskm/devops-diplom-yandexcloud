@@ -162,7 +162,7 @@ helm upgrade prometheus prometheus-community/kube-prometheus-stack -n monitoring
 ```
 http://84.201.131.10:32008/
 
-![screen](./src/grafana.png)
+![screen](./src/grafana2.png)
 
 Добавил пользователя guest с паролем guest.
 
@@ -187,7 +187,7 @@ kubectl get pods
 
 ![screen](./src/applyApp.png)
 
-![screen](./src/webApp.png)
+![screen](./src/webApp2.png)
 
 
 ### Деплой инфраструктуры в terraform pipeline
