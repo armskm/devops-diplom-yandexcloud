@@ -160,7 +160,7 @@ grafana:
 ```
 helm upgrade prometheus prometheus-community/kube-prometheus-stack -n monitoring -f values.yml
 ```
-http://62.84.119.86:32008/
+http://84.201.131.10:32008/
 
 ![screen](./src/grafana.png)
 
